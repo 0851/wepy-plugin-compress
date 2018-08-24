@@ -1,0 +1,43 @@
+{
+  "name": "wepy-plugin-compress",
+  "version": "1.0.0",
+  "description": "wepy-plugin-compress compress json wxml wxss js",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mkdir -p lib && babel index.js --watch --out-file lib/index.js",
+    "gitcommit": "git add . && git commit --allow-empty -am 'build..'",
+    "build": "mkdir -p lib && babel index.js --out-file lib/index.js && npm run gitcommit",
+    "release": "npm run release-patch",
+    "prelease": "npm run build && npm version prerelease && git push --tags --force && git push && npm publish",
+    "release-patch": "npm run build && npm version patch && git push --tags && git push && npm publish",
+    "release-minor": "npm run build && npm version minor && git push --tags && git push && npm publish",
+    "release-major": "npm run build && npm version major && git push --tags && git push && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0851/wepy-plugin-compress.git"
+  },
+  "keywords": [
+    "wepy",
+    "compress"
+  ],
+  "author": "wangjianliang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0851/wepy-plugin-compress/issues"
+  },
+  "homepage": "https://github.com/0851/wepy-plugin-compress#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "lodash": "^4.17.10",
+    "pretty-data": "^0.40.0",
+    "uglify-js": "^3.4.8"
+  }
+}
