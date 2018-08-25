@@ -14,7 +14,7 @@ export default class {
                 json: pd.jsonmin,
                 wxml: pd.xmlmin,
                 wxss: pd.cssmin,
-                js: (code) => {
+                js: (code, op) => {
                     const minify = UglifyJS.minify(code);
                     if (minify.error) {
                         console.log(minify.error);
@@ -46,7 +46,7 @@ export default class {
             const extname = path.extname(op.file).replace(/\./, "");
             const met = this.pretty[extname];
             if (_.isObject(met) && met.then) {
-                met(op.code).then((code) => {
+                met(op.code, op).then((code) => {
                     op.code = code;
                     op.next();
                 }).catch((e) => {
@@ -56,7 +56,7 @@ export default class {
                 return;
             }
             if (_.isFunction(met)) {
-                op.code = met(op.code);
+                op.code = met(op.code, op);
                 op.next();
                 return;
             }
