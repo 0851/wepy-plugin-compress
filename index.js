@@ -45,15 +45,25 @@ export default class {
             });
             const extname = path.extname(op.file).replace(/\./, "");
             const met = this.pretty[extname];
+            if (_.isObject(met) && met.then) {
+                met(op.code).then((code) => {
+                    op.code = code;
+                    op.next();
+                }).catch((e) => {
+                    console.error(`异常处理 , ${e.message}`);
+                    op.next();
+                });
+                return;
+            }
             if (_.isFunction(met)) {
-                op.code = met(op.code)
+                op.code = met(op.code);
+                op.next();
+                return;
             }
             op.next();
         } catch (e) {
             console.error(`异常处理 , ${e.message}`)
             op.next();
-            return
         }
-
     }
 }
