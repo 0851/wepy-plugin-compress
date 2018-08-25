@@ -1,6 +1,6 @@
 {
   "name": "wepy-plugin-compress",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "wepy-plugin-compress compress json wxml wxss js",
   "main": "lib/index.js",
   "scripts": {
