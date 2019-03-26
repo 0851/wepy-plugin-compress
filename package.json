@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "pretty-data": "^0.40.0",
     "uglify-js": "^3.4.8"
   }
